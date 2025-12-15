@@ -4,6 +4,10 @@
     "subtitle": "給秈瑀的一封星光長信",
     "from": "李傳漢",
     "to": "林秈瑀",
+    "stickers": {
+      "left": "/assets/stickers/nick.png",
+      "right": "/assets/stickers/judy.png"
+    },
     "music": {
       "src": "/assets/music/track.mp3",
       "credit": "Pixabay Music"

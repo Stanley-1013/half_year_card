@@ -264,3 +264,67 @@
   z-index: -10;
   pointer-events: none;
 }
+
+/* ===== 標題發光效果 ===== */
+.text-gradient {
+  background: linear-gradient(135deg, #E9F7FF 0%, #BFA7FF 50%, #7EE7FF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 8px rgba(233, 247, 255, 0.4));
+}
+
+.text-gradient-glow {
+  animation: title-glow 3s ease-in-out infinite;
+}
+
+@keyframes title-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(233, 247, 255, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 16px rgba(233, 247, 255, 0.7))
+           drop-shadow(0 0 32px rgba(191, 167, 255, 0.4));
+  }
+}
+
+/* ===== 向下提示動畫 ===== */
+#scroll-hint {
+  animation: hint-bounce 2s ease-in-out infinite;
+}
+
+@keyframes hint-bounce {
+  0%, 100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, -10px);
+  }
+}
+
+/* 箭頭容器 */
+#arrow-lottie svg,
+#arrow-lottie {
+  animation: arrow-bounce 1.5s ease-in-out infinite;
+}
+
+@keyframes arrow-bounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-6px);
+    opacity: 0.7;
+  }
+}
+
+/* Reduced Motion - 停用動畫 */
+@media (prefers-reduced-motion: reduce) {
+  .text-gradient-glow,
+  #scroll-hint,
+  #arrow-lottie,
+  #arrow-lottie svg {
+    animation: none !important;
+  }
+}

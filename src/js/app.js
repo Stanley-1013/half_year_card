@@ -116,6 +116,30 @@ function initWelcomeAnimations(storyData, reducedMotion) {
     document.getElementById('subtitle').textContent = site.subtitle;
   }
 
+  // 載入貼圖
+  if (storyData.site?.stickers) {
+    const leftSticker = document.getElementById('sticker-left');
+    const rightSticker = document.getElementById('sticker-right');
+
+    if (leftSticker && storyData.site.stickers.left) {
+      const imgLeft = document.createElement('img');
+      imgLeft.src = storyData.site.stickers.left;
+      imgLeft.alt = 'Left sticker';
+      imgLeft.className = 'w-full h-full object-contain';
+      imgLeft.onerror = () => console.warn('[App] Left sticker load failed');
+      leftSticker.appendChild(imgLeft);
+    }
+
+    if (rightSticker && storyData.site.stickers.right) {
+      const imgRight = document.createElement('img');
+      imgRight.src = storyData.site.stickers.right;
+      imgRight.alt = 'Right sticker';
+      imgRight.className = 'w-full h-full object-contain';
+      imgRight.onerror = () => console.warn('[App] Right sticker load failed');
+      rightSticker.appendChild(imgRight);
+    }
+  }
+
   const tl = gsap.timeline({ delay: 0.5 });
 
   if (reducedMotion) {
@@ -128,7 +152,32 @@ function initWelcomeAnimations(storyData, reducedMotion) {
       .to('#subtitle', { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, '-=0.5')
       .to(['#sticker-left', '#sticker-right'], { opacity: 1, y: 0, duration: 0.8, ease: 'back.out(1.2)', stagger: 0.2 }, '-=0.6')
       .to('#music-btn', { opacity: 1, scale: 1, duration: 0.6, ease: 'back.out(1.5)' }, '-=0.4')
-      .to('#scroll-hint', { opacity: 1, duration: 0.6 }, '-=0.3');
+      .to('#scroll-hint', { opacity: 1, duration: 0.6 }, '-=0.3')
+      .call(() => {
+        // 標題動畫完成後添加持續發光效果
+        const mainTitle = document.getElementById('main-title');
+        if (mainTitle) {
+          mainTitle.classList.add('text-gradient-glow');
+        }
+      });
+
+    // 貼圖漂浮動畫
+    gsap.to('#sticker-left', {
+      y: '-=6',
+      duration: 2.5,
+      ease: 'sine.inOut',
+      repeat: -1,
+      yoyo: true
+    });
+
+    gsap.to('#sticker-right', {
+      y: '-=6',
+      duration: 2.8,
+      ease: 'sine.inOut',
+      repeat: -1,
+      yoyo: true,
+      delay: 0.3
+    });
   }
 }
 
