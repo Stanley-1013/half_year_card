@@ -1,0 +1,266 @@
+/**
+ * main.css - 主樣式表
+ */
+
+/* Tailwind 指令 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 全局重置與基礎樣式 */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  ::selection {
+    background-color: rgba(191, 167, 255, 0.3);
+    color: #E9F7FF;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(11, 16, 38, 0.5);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(233, 247, 255, 0.2);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(233, 247, 255, 0.3);
+  }
+}
+
+/* Components 層 */
+@layer components {
+  .beat-card {
+    @apply glass-card rounded-2xl overflow-hidden shadow-card;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .beat-card:hover {
+    @apply shadow-glow;
+    transform: translateY(-4px);
+  }
+
+  .photo-container {
+    @apply relative overflow-hidden rounded-lg;
+    aspect-ratio: 9 / 16;
+  }
+
+  .photo-container img {
+    @apply w-full h-full object-cover;
+    transition: transform 0.5s ease;
+  }
+
+  .photo-container:hover img {
+    transform: scale(1.05);
+  }
+
+  .btn-primary {
+    @apply glass-card px-6 py-3 rounded-full text-starlight font-medium;
+    @apply shadow-glow hover:shadow-glow-lg;
+    @apply transition-all duration-300;
+    @apply active:scale-95;
+  }
+
+  .section-title {
+    @apply font-title text-2xl md:text-3xl font-bold text-gradient;
+  }
+
+  .section-text {
+    @apply text-base md:text-lg leading-relaxed text-starlight/90;
+  }
+}
+
+/* Utilities 層 */
+@layer utilities {
+  .no-select {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* 特殊動畫 */
+.twinkle-1 { animation-delay: 0s; }
+.twinkle-2 { animation-delay: 0.3s; }
+.twinkle-3 { animation-delay: 0.6s; }
+.twinkle-4 { animation-delay: 0.9s; }
+.twinkle-5 { animation-delay: 1.2s; }
+
+.float-delay-1 { animation-delay: 0s; }
+.float-delay-2 { animation-delay: 0.5s; }
+.float-delay-3 { animation-delay: 1s; }
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+.loading-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(233, 247, 255, 0.05) 0%,
+    rgba(233, 247, 255, 0.15) 50%,
+    rgba(233, 247, 255, 0.05) 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* 響應式調整 */
+@media (max-width: 374px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 768px) {
+  .beat-card {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  #timeline-container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ===== 銀河雲層動畫 ===== */
+
+/* 銀河雲漂移動畫 */
+#galaxy-mist > div:nth-child(1) {
+  animation: galaxy-drift-1 80s ease-in-out infinite alternate;
+}
+
+#galaxy-mist > div:nth-child(2) {
+  animation: galaxy-drift-2 90s ease-in-out infinite alternate-reverse;
+}
+
+#galaxy-mist > div:nth-child(3) {
+  animation: galaxy-drift-3 70s ease-in-out infinite alternate;
+}
+
+@keyframes galaxy-drift-1 {
+  0% {
+    transform: translate(-50%, 0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-48%, -3vh) scale(1.05);
+    opacity: 0.65;
+  }
+  100% {
+    transform: translate(-52%, 2vh) scale(0.98);
+    opacity: 0.55;
+  }
+}
+
+@keyframes galaxy-drift-2 {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate(-2vw, 2vh) scale(1.03);
+    opacity: 0.45;
+  }
+  100% {
+    transform: translate(3vw, -2vh) scale(0.97);
+    opacity: 0.35;
+  }
+}
+
+@keyframes galaxy-drift-3 {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translate(2vw, -2vh) scale(1.04);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(-3vw, 3vh) scale(0.96);
+    opacity: 0.3;
+  }
+}
+
+/* Christmas 主題 - 更亮更冷 */
+#galaxy-mist.christmas-theme {
+  filter: brightness(1.15) hue-rotate(-10deg);
+  transition: filter 1.5s ease-in-out;
+}
+
+#galaxy-mist.christmas-theme > div:nth-child(1) {
+  opacity: 0.7;
+}
+
+#galaxy-mist.christmas-theme > div:nth-child(2) {
+  opacity: 0.5;
+}
+
+/* Reduced Motion - 停用所有銀河動畫 */
+@media (prefers-reduced-motion: reduce) {
+  #galaxy-mist > div {
+    animation: none !important;
+  }
+}
+
+/* ===== 星空 Canvas 樣式 ===== */
+
+#starfield-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  pointer-events: none;
+}

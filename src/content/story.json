@@ -1,0 +1,36 @@
+{
+  "site": {
+    "title": "Half-Year & Christmas",
+    "subtitle": "給秈瑀的一封星光長信",
+    "from": "李傳漢",
+    "to": "林秈瑀",
+    "music": {
+      "src": "/assets/music/track.mp3",
+      "credit": "Pixabay Music"
+    }
+  },
+  "beats": [
+    {
+      "id": "B01",
+      "timeLabel": "第一個瞬間",
+      "title": "我們的開始",
+      "type": "photo",
+      "photo": "/assets/photos/placeholder-01.jpg",
+      "caption": "在這裡寫下你想說的話...",
+      "theme": "starlight"
+    },
+    {
+      "id": "B02",
+      "timeLabel": "美好時光",
+      "title": "一起的日子",
+      "type": "photo",
+      "photo": "/assets/photos/placeholder-02.jpg",
+      "caption": "每一天都因為有你而特別...",
+      "theme": "starlight"
+    }
+  ],
+  "ending": {
+    "title": "半週年快樂 & 聖誕快樂",
+    "message": "謝謝你這半年來的陪伴，願我們的未來如星空般璀璨。聖誕快樂，我愛你。"
+  }
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="給秈瑀的一封星光長信 - 半週年與聖誕祝福">
+  <meta name="author" content="李傳漢">
+  <meta name="theme-color" content="#050614">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Half-Year & Christmas">
+  <meta property="og:description" content="給秈瑀的一封星光長信">
+
+  <!-- iOS PWA -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <title>Half-Year & Christmas | 給秈瑀的星光長信</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="/src/styles/main.css">
+</head>
+<body class="font-body text-starlight bg-night-900 overflow-x-hidden">
+
+  <!-- Three.js 星空背景 Canvas -->
+  <canvas id="starfield-canvas" class="fixed inset-0 z-background"></canvas>
+
+  <!-- 銀河漸層雲 -->
+  <div id="galaxy-mist" class="fixed inset-0 z-galaxy pointer-events-none">
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[120vw] h-[80vh] bg-galaxy-radial opacity-60"></div>
+    <div class="absolute top-2/3 right-0 w-[100vw] h-[60vh] bg-galaxy-radial-cyan opacity-40"></div>
+    <div class="absolute bottom-0 left-0 w-[90vw] h-[50vh] bg-galaxy-radial-pink opacity-35"></div>
+  </div>
+
+  <!-- 主應用容器 -->
+  <div id="app" class="relative z-content">
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="fixed inset-0 z-modal flex items-center justify-center bg-night-900">
+      <div class="text-center">
+        <div class="w-16 h-16 border-4 border-starlight border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+        <p class="text-lg text-starlight/70">Loading starlight...</p>
+      </div>
+    </div>
+
+    <!-- Welcome Section (S0) -->
+    <section id="welcome" class="min-h-screen flex flex-col items-center justify-center px-6 py-12 relative">
+
+      <!-- 左下貼圖 -->
+      <div id="sticker-left" class="absolute bottom-20 left-6 w-24 h-24 opacity-0"></div>
+
+      <!-- 主標題區 -->
+      <div class="text-center space-y-6 mb-12">
+        <h1 class="font-title text-4xl md:text-5xl font-bold text-gradient opacity-0" id="main-title">
+          Half-Year & Christmas
+        </h1>
+        <p class="text-lg md:text-xl text-starlight/80 opacity-0" id="subtitle">
+          給秈瑀的一封星光長信
+        </p>
+      </div>
+
+      <!-- 右下貼圖 -->
+      <div id="sticker-right" class="absolute bottom-20 right-6 w-24 h-24 opacity-0"></div>
+
+      <!-- 開啟音樂按鈕 -->
+      <button id="music-btn" class="glass-card px-8 py-4 rounded-full text-starlight font-medium shadow-glow hover:shadow-glow-lg transition-all duration-300 opacity-0">
+        開啟音樂
+      </button>
+
+      <!-- 向下滑動提示 -->
+      <div id="scroll-hint" class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center opacity-0">
+        <p class="text-sm text-starlight/60 mb-2">向下滑動</p>
+        <div id="arrow-lottie" class="w-12 h-12"></div>
+      </div>
+
+    </section>
+
+    <!-- Timeline Container (S1~S6) -->
+    <div id="timeline-container" class="relative">
+      <svg id="vine-svg" class="absolute left-1/2 -translate-x-1/2 top-0 w-full h-full pointer-events-none z-decoration" preserveAspectRatio="xMidYMid meet"></svg>
+      <div id="beats-container" class="space-y-32 py-24"></div>
+    </div>
+
+    <!-- Ending Section (S7) -->
+    <section id="ending" class="min-h-screen flex flex-col items-center justify-center px-6 py-24 relative">
+      <div class="max-w-2xl mx-auto text-center space-y-8">
+
+        <h2 class="font-title text-3xl md:text-4xl font-bold text-gradient" id="ending-title">
+          半週年快樂 & 聖誕快樂
+        </h2>
+
+        <div class="glass-card p-8 rounded-2xl space-y-4">
+          <p id="ending-message" class="text-base md:text-lg leading-relaxed text-starlight/90"></p>
+        </div>
+
+        <button id="back-to-top-btn" class="glass-card px-6 py-3 rounded-full text-starlight font-medium shadow-glow hover:shadow-glow-lg transition-all duration-300">
+          ↑ 回到頂部
+        </button>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Main Script -->
+  <script type="module" src="/src/js/app.js"></script>
+
+</body>
+</html>
