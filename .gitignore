@@ -5,3 +5,12 @@ dist/
 *.log
 .env
 .env.local
+
+# Claude Code 相關
+.claude/
+CLAUDE.md
+
+# Firebase
+.firebase/
+.firebaserc
+

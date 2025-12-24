@@ -4,6 +4,7 @@ import { resolve } from 'path';
 export default defineConfig({
   root: '.',
   publicDir: 'public',
+  base: './',  // 使用相對路徑，支援任意部署環境
 
   resolve: {
     alias: {

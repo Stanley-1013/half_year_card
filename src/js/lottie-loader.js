@@ -9,7 +9,8 @@
  * - 性能最佳化（自動銷毀、暫停/恢復）
  */
 
-import lottie from 'lottie-web';
+// lottie-web import 已移除（目前全部使用 CSS fallback）
+// import lottie from 'lottie-web';
 
 let arrowAnimation = null;
 const beatAnimations = new Map(); // 存儲 beat 卡片中的動畫引用
@@ -45,30 +46,14 @@ export function initLottie() {
 
 /**
  * 初始化 Welcome 向下箭頭動畫
+ * 直接使用 CSS fallback（避免 Lottie JSON 載入錯誤）
  */
 function initArrowAnimation() {
   const arrowContainer = document.getElementById('arrow-lottie');
   if (arrowContainer) {
-    // 檢查是否有 Lottie JSON 檔案
-    fetch('/assets/lottie/arrow-down.json')
-      .then(response => {
-        if (response.ok) {
-          arrowAnimation = lottie.loadAnimation({
-            container: arrowContainer,
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: '/assets/lottie/arrow-down.json'
-          });
-          console.log('[Lottie] Arrow animation loaded');
-        } else {
-          // 如果沒有 Lottie 檔案，使用 CSS 動畫替代
-          createFallbackArrow(arrowContainer);
-        }
-      })
-      .catch(() => {
-        createFallbackArrow(arrowContainer);
-      });
+    // 直接使用 CSS 動畫（無需 Lottie JSON 檔案）
+    createFallbackArrow(arrowContainer);
+    console.log('[Lottie] Arrow animation loaded (CSS fallback)');
   }
 }
 

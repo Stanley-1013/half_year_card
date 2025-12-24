@@ -19,6 +19,9 @@ import { initVineSVG, refreshVineScroll } from './vivus-vine.js';
 import { initEndingEffects, refreshEndingScrollTriggers } from './ending-effects.js';
 import { detectPerformance, prefersReducedMotion } from './utils.js';
 
+// 靜態 import story data（Vite 會在 build 時內嵌）
+import storyDataRaw from '@content/story.json';
+
 // 註冊 GSAP 插件
 gsap.registerPlugin(ScrollTrigger);
 
@@ -76,23 +79,9 @@ async function init() {
   }
 }
 
-async function loadStoryData() {
-  try {
-    const response = await fetch('/src/content/story.json');
-    if (!response.ok) throw new Error('Failed to load story.json');
-    return await response.json();
-  } catch (error) {
-    console.warn('[App] Using default story data');
-    return {
-      site: {
-        title: 'Half-Year & Christmas',
-        subtitle: '給秈瑀的一封星光長信',
-        music: { src: '/assets/music/track.mp3' }
-      },
-      beats: [],
-      ending: { message: '' }
-    };
-  }
+function loadStoryData() {
+  // 使用靜態 import 的資料（已在檔案頂部 import）
+  return storyDataRaw;
 }
 
 function initSmoothScroll() {
