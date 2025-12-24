@@ -18,6 +18,9 @@
 
   <title>Half-Year & Christmas | 給秈瑀的星光長信</title>
 
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -83,8 +86,10 @@
 
     <!-- Timeline Container (S1~S6) -->
     <div id="timeline-container" class="relative">
-      <svg id="vine-svg" class="absolute left-1/2 -translate-x-1/2 top-0 w-full h-full pointer-events-none z-decoration" preserveAspectRatio="xMidYMid meet"></svg>
-      <div id="beats-container" class="space-y-32 py-24"></div>
+      <!-- 藤蔓 SVG（在卡片下層 z-0） -->
+      <svg id="vine-svg" class="absolute left-1/2 -translate-x-1/2 top-0 w-full h-full pointer-events-none z-0" preserveAspectRatio="xMidYMid meet"></svg>
+      <!-- 時間線卡片（在藤蔓上層 z-10） -->
+      <div id="beats-container" class="relative z-10 space-y-32 py-24"></div>
     </div>
 
     <!-- Ending Section (S7) -->

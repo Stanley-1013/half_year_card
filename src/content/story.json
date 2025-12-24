@@ -5,36 +5,198 @@
     "from": "李傳漢",
     "to": "林秈瑀",
     "stickers": {
-      "left": "/assets/stickers/nick.png",
-      "right": "/assets/stickers/judy.png"
+      "left": "/assets/stickers/main.png",
+      "right": "/assets/stickers/sticker.png"
     },
     "music": {
-      "src": "/assets/music/track.mp3",
+      "src": "/assets/music/we-wish-you-a-merry-christmas-452819.mp3",
       "credit": "Pixabay Music"
     }
   },
   "beats": [
     {
       "id": "B01",
-      "timeLabel": "第一個瞬間",
-      "title": "我們的開始",
+      "timeLabel": "2025.04.03",
+      "title": "故事的起點",
       "type": "photo",
-      "photo": "/assets/photos/placeholder-01.jpg",
-      "caption": "在這裡寫下你想說的話...",
-      "theme": "starlight"
+      "photo": "/assets/photos/IMG_20250403_220048.jpg",
+      "caption": "從這一刻開始，我的世界多了你的色彩",
+      "theme": "starlight",
+      "stickerLeft": "/assets/stickers/main.png",
+      "stickerRight": "/assets/stickers/sticker.png",
+      "lottieAnimation": "sparkle"
     },
     {
       "id": "B02",
-      "timeLabel": "美好時光",
-      "title": "一起的日子",
+      "timeLabel": "2025.04.04",
+      "title": "心動的瞬間",
       "type": "photo",
-      "photo": "/assets/photos/placeholder-02.jpg",
-      "caption": "每一天都因為有你而特別...",
-      "theme": "starlight"
+      "photo": "/assets/photos/IMG_20250404_174841.jpg",
+      "caption": "有些遇見，一眼就是一輩子",
+      "theme": "starlight",
+      "stickerLeft": "/assets/stickers/sticker (1).png",
+      "stickerRight": "/assets/stickers/5-1.thumb128.png",
+      "lottieAnimation": "sparkle"
+    },
+    {
+      "id": "B03",
+      "timeLabel": "2025.04.17",
+      "title": "陽光下的你",
+      "type": "photo",
+      "photo": "/assets/photos/IMG_20250417_103734.jpg",
+      "caption": "每一個有你的日子，都是晴天",
+      "theme": "starlight",
+      "stickerLeft": "/assets/stickers/sticker (2).png",
+      "stickerRight": "/assets/stickers/7-1.thumb128.png",
+      "lottieAnimation": "sparkle"
+    },
+    {
+      "id": "B04",
+      "timeLabel": "2025.04.17",
+      "title": "夜晚的溫柔",
+      "type": "photo",
+      "photo": "/assets/photos/IMG_20250417_203734.jpg",
+      "caption": "夜色很美，但不及你眼中的星光",
+      "theme": "starlight",
+      "stickerLeft": "/assets/stickers/sticker (3).png",
+      "stickerRight": "/assets/stickers/8-1.thumb128.png",
+      "lottieAnimation": "sparkle"
+    },
+    {
+      "id": "B05",
+      "timeLabel": "2025.07.04",
+      "title": "夏日記憶",
+      "type": "photo",
+      "photo": "/assets/photos/IMG_20250704_153500.jpg",
+      "caption": "和你一起，連平凡的日子都閃閃發光",
+      "theme": "christmas",
+      "stickerLeft": "/assets/stickers/sticker (4).png",
+      "stickerRight": "/assets/stickers/10-1.thumb128.png",
+      "lottieAnimation": "snowflake"
+    },
+    {
+      "id": "B06",
+      "timeLabel": "2025.07.05",
+      "title": "深夜的約定",
+      "type": "photo",
+      "photo": "/assets/photos/IMG_20250705_223209.jpg",
+      "caption": "最好的時光，是有你在身邊的每一秒",
+      "theme": "christmas",
+      "stickerLeft": "/assets/stickers/19-1.thumb128.png",
+      "stickerRight": "/assets/stickers/main.png",
+      "lottieAnimation": "snowflake"
+    },
+    {
+      "id": "B07",
+      "timeLabel": "2025.07.07",
+      "title": "七夕的浪漫",
+      "type": "photo",
+      "photo": "/assets/photos/IMG_20250707_194841.jpg",
+      "caption": "謝謝你，讓我相信童話是真的",
+      "theme": "christmas",
+      "stickerLeft": "/assets/stickers/20-1.thumb128.png",
+      "stickerRight": "/assets/stickers/sticker (1).png",
+      "lottieAnimation": "snowflake"
+    },
+    {
+      "id": "B08",
+      "timeLabel": "2025.08.10",
+      "title": "八月的甜蜜",
+      "type": "photo",
+      "photo": "/assets/photos/IMG_20250810_201031.jpg",
+      "caption": "你的笑容，是我每天最期待的風景",
+      "theme": "christmas",
+      "stickerLeft": "/assets/stickers/16-1.thumb128.png",
+      "stickerRight": "/assets/stickers/sticker (2).png",
+      "lottieAnimation": "snowflake"
+    },
+    {
+      "id": "B09",
+      "timeLabel": "2025.08.12",
+      "title": "小確幸",
+      "type": "photo",
+      "photo": "/assets/photos/IMG_20250812_203635.jpg",
+      "caption": "和你在一起，每個小瞬間都變成了珍藏",
+      "theme": "memory",
+      "stickerLeft": "/assets/stickers/7-1.thumb128.png",
+      "stickerRight": "/assets/stickers/sticker (3).png",
+      "lottieAnimation": "sparkle"
+    },
+    {
+      "id": "B10",
+      "timeLabel": "2025.09.07",
+      "title": "秋天的溫度",
+      "type": "photo",
+      "photo": "/assets/photos/IMG_20250907_134836.jpg",
+      "caption": "我想牽著你的手，走過春夏秋冬",
+      "theme": "memory",
+      "stickerLeft": "/assets/stickers/8-1.thumb128.png",
+      "stickerRight": "/assets/stickers/sticker (4).png",
+      "lottieAnimation": "sparkle"
+    },
+    {
+      "id": "B11",
+      "timeLabel": "2025.09.07",
+      "title": "午後時光",
+      "type": "photo",
+      "photo": "/assets/photos/IMG_20250907_155115.jpg",
+      "caption": "有你的地方，就是我想回去的家",
+      "theme": "memory",
+      "stickerLeft": "/assets/stickers/21-1.thumb128.png",
+      "stickerRight": "/assets/stickers/19-1.thumb128.png",
+      "lottieAnimation": "sparkle"
+    },
+    {
+      "id": "B12",
+      "timeLabel": "2025.10.13",
+      "title": "深夜的思念",
+      "type": "photo",
+      "photo": "/assets/photos/IMG_20251013_005633.jpg",
+      "caption": "想你的時候，連星星都在微笑",
+      "theme": "memory",
+      "stickerLeft": "/assets/stickers/main.png",
+      "stickerRight": "/assets/stickers/20-1.thumb128.png",
+      "lottieAnimation": "sparkle"
+    },
+    {
+      "id": "B13",
+      "timeLabel": "2025.12.02",
+      "title": "冬日序曲",
+      "type": "photo",
+      "photo": "/assets/photos/IMG_20251202_203134.jpg",
+      "caption": "這個冬天，因為有你而溫暖",
+      "theme": "christmas",
+      "stickerLeft": "/assets/stickers/sticker.png",
+      "stickerRight": "/assets/stickers/6-1.thumb128.png",
+      "lottieAnimation": "snowflake"
+    },
+    {
+      "id": "B14",
+      "timeLabel": "2025.12.04",
+      "title": "浪漫的夜",
+      "type": "photo",
+      "photo": "/assets/photos/IMG_20251204_220522.jpg",
+      "caption": "最浪漫的事，就是和你一起慢慢變老",
+      "theme": "christmas",
+      "stickerLeft": "/assets/stickers/sticker (1).png",
+      "stickerRight": "/assets/stickers/7-1.thumb128.png",
+      "lottieAnimation": "snowflake"
+    },
+    {
+      "id": "B15",
+      "timeLabel": "2025.12.15",
+      "title": "聖誕前夕",
+      "type": "photo",
+      "photo": "/assets/photos/IMG_20251215_204634.jpg",
+      "caption": "今年最美的禮物，就是遇見了你",
+      "theme": "christmas",
+      "stickerLeft": "/assets/stickers/sticker (2).png",
+      "stickerRight": "/assets/stickers/main.png",
+      "lottieAnimation": "snowflake"
     }
   ],
   "ending": {
     "title": "半週年快樂 & 聖誕快樂",
-    "message": "謝謝你這半年來的陪伴，願我們的未來如星空般璀璨。聖誕快樂，我愛你。"
+    "message": "親愛的秈瑀，謝謝你這半年來的陪伴，每一個和你在一起的日子都是我最珍貴的回憶。願我們的未來如星空般璀璨，如陽光般溫暖。聖誕快樂，我愛你。"
   }
 }

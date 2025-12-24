@@ -1,11 +1,26 @@
 /**
- * main.css - 主樣式表
+ * main.css - 主樣式表 + 主題系統 + 視差效果 GPU 加速
  */
 
 /* Tailwind 指令 */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ===== CSS 變數根定義 ===== */
+:root {
+  /* 默認 starlight 主題顏色 */
+  --theme-current-primary: #E9F7FF;
+  --theme-current-secondary: #BFA7FF;
+  --theme-current-accent: #7EE7FF;
+  --theme-current-background: rgba(10, 12, 28, 0.55);
+  --theme-current-border: rgba(233, 247, 255, 0.12);
+  --theme-current-borderHover: rgba(233, 247, 255, 0.18);
+  --theme-current-glow: rgba(233, 247, 255, 0.15);
+  --theme-current-glowHover: rgba(233, 247, 255, 0.12);
+  --theme-current-filter: brightness(1) hue-rotate(0deg);
+  --theme-transition: all 1.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
 
 /* 全局重置與基礎樣式 */
 @layer base {
@@ -53,13 +68,161 @@
 /* Components 層 */
 @layer components {
   .beat-card {
-    @apply glass-card rounded-2xl overflow-hidden shadow-card;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    @apply glass-card rounded-2xl overflow-visible shadow-card;
+    transition: transform 0.3s ease, box-shadow var(--theme-transition);
   }
 
   .beat-card:hover {
     @apply shadow-glow;
     transform: translateY(-4px);
+  }
+
+  /* ===== 增強的玻璃擬態卡片樣式（主題感知） ===== */
+  .glass-card-enhanced {
+    /* 基底背景色 - 使用主題變數 */
+    background: var(--theme-current-background);
+
+    /* 玻璃模糊效果 */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    /* 細緻邊框 - 使用主題變數 */
+    border: 1px solid var(--theme-current-border);
+
+    /* 柔和陰影 - 營造景深 */
+    box-shadow: 0 8px 32px rgba(5, 6, 20, 0.5),
+                inset 0 1px 0 var(--theme-current-border);
+
+    /* 平滑過渡效果 */
+    transition: var(--theme-transition);
+
+    /* GPU 加速 */
+    will-change: transform, filter;
+    transform: translateZ(0);
+  }
+
+  /* 懸停時增強發光效果 */
+  .glass-card-enhanced:hover {
+    background: rgba(10, 12, 28, 0.65);
+    border-color: var(--theme-current-borderHover);
+    box-shadow: 0 12px 48px var(--theme-current-glow),
+                inset 0 1px 0 var(--theme-current-borderHover);
+  }
+
+  /* ===== 主題感知的卡片樣式 ===== */
+
+  /* Starlight 主題（默認，冷色調藍白） */
+  .glass-card-enhanced[data-theme="starlight"] {
+    border-color: rgba(233, 247, 255, 0.15);
+    background: rgba(10, 12, 28, 0.55);
+  }
+
+  .glass-card-enhanced[data-theme="starlight"]:hover {
+    border-color: rgba(233, 247, 255, 0.25);
+    box-shadow: 0 12px 48px rgba(233, 247, 255, 0.15),
+                inset 0 1px 0 rgba(233, 247, 255, 0.12);
+  }
+
+  /* Christmas 主題（暖色調紅粉） */
+  .glass-card-enhanced[data-theme="christmas"] {
+    border-color: rgba(255, 183, 225, 0.15);
+    background: rgba(20, 12, 16, 0.60);
+  }
+
+  .glass-card-enhanced[data-theme="christmas"]:hover {
+    border-color: rgba(255, 183, 225, 0.25);
+    box-shadow: 0 12px 48px rgba(255, 183, 225, 0.1),
+                inset 0 1px 0 rgba(255, 183, 225, 0.08);
+  }
+
+  /* Memory 主題（懷舊色調米黃） */
+  .glass-card-enhanced[data-theme="memory"] {
+    border-color: rgba(212, 201, 184, 0.12);
+    background: rgba(25, 20, 15, 0.58);
+  }
+
+  .glass-card-enhanced[data-theme="memory"]:hover {
+    border-color: rgba(212, 201, 184, 0.18);
+    box-shadow: 0 12px 48px rgba(212, 201, 184, 0.08),
+                inset 0 1px 0 rgba(212, 201, 184, 0.06);
+  }
+
+  /* ===== 主題感知的文字樣式 ===== */
+
+  /* 主題主色文字 */
+  .theme-primary-text {
+    color: var(--theme-current-primary);
+    transition: color var(--theme-transition);
+  }
+
+  /* 主題次色文字 */
+  .theme-secondary-text {
+    color: var(--theme-current-secondary, var(--theme-current-primary));
+    opacity: 0.8;
+    transition: color var(--theme-transition);
+  }
+
+  /* 主題漸變文字 */
+  .theme-text-gradient {
+    background: linear-gradient(135deg, var(--theme-current-primary) 0%, var(--theme-current-secondary) 50%, var(--theme-current-accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 8px var(--theme-current-glow));
+    transition: var(--theme-transition);
+  }
+
+  /* ===== 手繪邊框樣式（Rough.js） ===== */
+  .rough-border {
+    /* SVG 邊框層 */
+    z-index: 5;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  /* 卡片懸停時邊框變亮 */
+  .beat-card:hover .rough-border {
+    opacity: 1;
+  }
+
+  /* Rough.js SVG 內容優化 */
+  .rough-border g,
+  .rough-border path {
+    transition: stroke 0.3s ease;
+  }
+
+  /* ===== 貼圖插槽樣式 ===== */
+  .sticker-slot-left,
+  .sticker-slot-right {
+    transition: opacity 0.4s ease;
+  }
+
+  .sticker-slot-left img,
+  .sticker-slot-right img {
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease;
+  }
+
+  .beat-card:hover .sticker-slot-left img,
+  .beat-card:hover .sticker-slot-right img {
+    transform: scale(1.08) rotate(-2deg);
+  }
+
+  /* ===== Lottie 容器樣式 ===== */
+  .lottie-container {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 15;
+  }
+
+  .beat-card:hover .lottie-container {
+    opacity: 1;
+  }
+
+  /* ===== 卡片內容區 ===== */
+  .card-content {
+    position: relative;
+    z-index: 10;
   }
 
   .photo-container {
@@ -81,6 +244,7 @@
     @apply shadow-glow hover:shadow-glow-lg;
     @apply transition-all duration-300;
     @apply active:scale-95;
+    color: var(--theme-current-primary);
   }
 
   .section-title {
@@ -89,6 +253,7 @@
 
   .section-text {
     @apply text-base md:text-lg leading-relaxed text-starlight/90;
+    color: var(--theme-current-secondary);
   }
 }
 
@@ -104,11 +269,41 @@
     will-change: transform;
   }
 
+  /* ===== 視差效果 GPU 加速規則 ===== */
+  /* 背景元素 GPU 加速（用於視差動畫） */
+  #starfield-canvas {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  #galaxy-mist {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  /* Beat 卡片視差 GPU 加速 */
+  .beat-card {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+
+  /* 禁用 reduced-motion 用戶的視差效果 */
   @media (prefers-reduced-motion: reduce) {
     * {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
+    }
+
+    #starfield-canvas,
+    #galaxy-mist,
+    .beat-card {
+      will-change: auto;
     }
   }
 
@@ -154,6 +349,12 @@
   html {
     font-size: 14px;
   }
+
+  /* 手機版隱藏外側貼圖插槽以節省空間 */
+  .sticker-slot-left,
+  .sticker-slot-right {
+    display: none;
+  }
 }
 
 @media (min-width: 768px) {
@@ -162,6 +363,12 @@
     margin-left: auto;
     margin-right: auto;
   }
+
+  /* 平板及以上顯示貼圖插槽 */
+  .sticker-slot-left,
+  .sticker-slot-right {
+    display: block;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -169,6 +376,15 @@
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  /* 桌面版：左右卡片外側貼圖距離更遠 */
+  .beat-card:nth-child(odd) .sticker-slot-left {
+    left: -32px;
+  }
+
+  .beat-card:nth-child(even) .sticker-slot-right {
+    right: -32px;
   }
 }
 
@@ -232,18 +448,39 @@
   }
 }
 
-/* Christmas 主題 - 更亮更冷 */
-#galaxy-mist.christmas-theme {
-  filter: brightness(1.15) hue-rotate(-10deg);
-  transition: filter 1.5s ease-in-out;
+/* ===== 主題背景濾鏡應用 ===== */
+
+/* 應用於銀河霧層 - 根據主題改變濾鏡 */
+#galaxy-mist {
+  transition: filter var(--theme-transition);
+  filter: var(--theme-current-filter);
 }
 
-#galaxy-mist.christmas-theme > div:nth-child(1) {
+/* Starlight 主題 - 原始狀態 */
+html[data-theme="starlight"] #galaxy-mist {
+  filter: brightness(1) hue-rotate(0deg);
+}
+
+/* Christmas 主題 - 更亮更冷 */
+html[data-theme="christmas"] #galaxy-mist {
+  filter: brightness(1.15) hue-rotate(-10deg) saturate(1.2);
+}
+
+html[data-theme="christmas"] #galaxy-mist > div:nth-child(1) {
   opacity: 0.7;
 }
 
-#galaxy-mist.christmas-theme > div:nth-child(2) {
+html[data-theme="christmas"] #galaxy-mist > div:nth-child(2) {
   opacity: 0.5;
+}
+
+/* Memory 主題 - 溫暖懷舊 */
+html[data-theme="memory"] #galaxy-mist {
+  filter: brightness(0.95) sepia(0.25) hue-rotate(25deg);
+}
+
+html[data-theme="memory"] #galaxy-mist > div {
+  opacity: 0.4;
 }
 
 /* Reduced Motion - 停用所有銀河動畫 */
@@ -265,13 +502,14 @@
   pointer-events: none;
 }
 
-/* ===== 標題發光效果 ===== */
+/* ===== 標題發光效果（主題感知） ===== */
 .text-gradient {
-  background: linear-gradient(135deg, #E9F7FF 0%, #BFA7FF 50%, #7EE7FF 100%);
+  background: linear-gradient(135deg, var(--theme-current-primary) 0%, var(--theme-current-secondary) 50%, var(--theme-current-accent) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 8px rgba(233, 247, 255, 0.4));
+  filter: drop-shadow(0 0 8px var(--theme-current-glow));
+  transition: var(--theme-transition);
 }
 
 .text-gradient-glow {
@@ -280,11 +518,11 @@
 
 @keyframes title-glow {
   0%, 100% {
-    filter: drop-shadow(0 0 8px rgba(233, 247, 255, 0.4));
+    filter: drop-shadow(0 0 8px var(--theme-current-glow));
   }
   50% {
-    filter: drop-shadow(0 0 16px rgba(233, 247, 255, 0.7))
-           drop-shadow(0 0 32px rgba(191, 167, 255, 0.4));
+    filter: drop-shadow(0 0 16px var(--theme-current-glow))
+           drop-shadow(0 0 32px var(--theme-current-accent));
   }
 }
 
